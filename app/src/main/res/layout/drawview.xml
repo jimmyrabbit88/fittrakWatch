@@ -1,0 +1,30 @@
+<androidx.wear.widget.drawer.WearableDrawerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="bottom"
+    android:background="@color/dark_red"
+    app:drawerContent="@+id/drawer_content"
+    app:peekView="@+id/peek_view">
+
+    <FrameLayout
+        android:id="@id/drawer_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@id/peek_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_play" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_pause" />
+    </LinearLayout>
+</androidx.wear.widget.drawer.WearableDrawerView>
