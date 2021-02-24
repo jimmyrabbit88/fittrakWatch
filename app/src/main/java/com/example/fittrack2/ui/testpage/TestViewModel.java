@@ -5,9 +5,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.fittrack2.MainActivity;
 import com.example.fittrack2.R;
+import com.example.fittrack2.services.TrackingService;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -80,8 +83,10 @@ public class TestViewModel extends ViewModel {
 
 
     public void startTest() {
-        mText.setValue("ok go");
+        //startService();
     }
+
+
 
     private double pingLatitude() {
         return 0;
