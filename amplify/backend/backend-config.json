@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"fittrack2f3659b77": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

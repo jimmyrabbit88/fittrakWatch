@@ -6,25 +6,76 @@
     android:layout_height="match_parent"
     android:background="#4CAF50">
 
-    <TextView
-        android:id="@+id/acwr_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" 95%"
-        android:textSize="70sp"
+
+    <com.progress.progressview.ProgressView
+        android:id="@+id/progressView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_vertical"
+        android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.503"
+        app:pvBackgroundColor="#3A637E"
+        app:pvBackgroundWidth="10dp"
+        app:pvDirection="fromLeft"
+        app:pvProgress="0"
+        app:pvProgressColor="#00CCFF"
+        app:pvShape="arc" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txt_acwr"
+        android:layout_width="177dp"
+        android:layout_height="90dp"
+        android:autoSizeTextType="uniform"
+        android:autoText="false"
+        android:clickable="true"
+        android:text="TAP"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <TextView
+        android:id="@+id/txt_tip"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:autoSizeTextType="uniform"
+        android:autoText="true"
+        android:text="Maintain Workload"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_acwr" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="22dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/progressView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497"
+        app:srcCompat="@drawable/ic_baseline_arrow_left_24" />
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="94dp"
-        android:text="6:45 Training"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/acwr_value"
-        app:layout_constraintStart_toStartOf="@+id/acwr_value"
-        app:layout_constraintTop_toTopOf="@+id/acwr_value" />
+        android:layout_marginStart="16dp"
+        android:text="target"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

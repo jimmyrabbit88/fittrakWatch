@@ -2,6 +2,7 @@ package com.example.fittrack2;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -13,7 +14,10 @@ import androidx.wear.widget.drawer.WearableActionDrawerView;
 import androidx.wear.widget.drawer.WearableDrawerLayout;
 import androidx.wear.widget.drawer.WearableNavigationDrawerView;
 
+import com.amplifyframework.core.Amplify;
+import com.example.fittrack2.services.VolleySingleton;
 import com.example.fittrack2.ui.homepage.HomeFragment;
+import com.example.fittrack2.ui.login.LoginFragment;
 import com.example.fittrack2.ui.runpage.RunFragment;
 import com.example.fittrack2.ui.testpage.TestFragment;
 
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         appPagesList = new ArrayList<>();
         appPagesList.add(new AppPage("Home", getDrawable(R.drawable.ic_baseline_home_24)));
         appPagesList.add(new AppPage("Runs", getDrawable(R.drawable.ic_baseline_directions_run_24)));
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements
 
         frag = findViewById(R.id.contentFragmentArea);
         context = getApplicationContext();
+        VolleySingleton.getInstance(this);
 
         // Top navigation drawer
         wearableNavigationDrawer = findViewById(R.id.top_navigation_drawer);
@@ -52,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements
 //        // Peeks action drawer on the bottom.
 //        wearableActionDrawer.getController().peekDrawer();
         final Fragment homeFragment = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragmentArea, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragmentArea, new LoginFragment()).commit();
 
 
         wearableNavigationDrawer.addOnItemSelectedListener(new WearableNavigationDrawerView.OnItemSelectedListener() {

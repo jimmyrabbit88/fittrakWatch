@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-fittrack2-dev-153028-authRole",
+            "UnauthRoleArn": "arn:aws:iam::450902732958:role/amplify-fittrack2-dev-153028-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::450902732958:role/amplify-fittrack2-dev-153028-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-fittrack2-dev-153028-deployment",
+            "UnauthRoleName": "amplify-fittrack2-dev-153028-unauthRole",
+            "StackName": "amplify-fittrack2-dev-153028",
+            "StackId": "arn:aws:cloudformation:eu-west-1:450902732958:stack/amplify-fittrack2-dev-153028/b43188e0-8bec-11eb-832d-0294aa7352d7",
+            "AmplifyAppId": "du28251fazjfk"
+        },
+        "categories": {
+            "auth": {
+                "fittrack2f3659b77": {}
+            }
+        }
+    }
+}
