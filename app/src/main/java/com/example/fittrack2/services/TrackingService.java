@@ -70,6 +70,7 @@ public class TrackingService extends LifecycleService {
                     break;
                 case "ACTION_STOP_SERVICE":
                     Log.d("TAG", "stop");
+                    isTracking.postValue(false);
                     break;
                 default:
                     break;
@@ -171,9 +172,9 @@ public class TrackingService extends LifecycleService {
             }
 
         }
-        else if(location.distanceTo(markedLocation) >= (routeDistances[stageMarker.getValue()])/2){
-            rotation.postValue(0f);
-        }
+//        else if(location.distanceTo(markedLocation) >= (routeDistances[stageMarker.getValue()])/2){
+//            rotation.postValue(0f);
+//        }
         else{
             Log.d("UHH", "distance" + location.distanceTo(markedLocation));
         }

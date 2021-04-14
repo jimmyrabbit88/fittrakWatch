@@ -63,6 +63,16 @@ public class TestFragment extends Fragment {
         btnBegin = root.findViewById(R.id.btn_test_begin_test);
         arrow = root.findViewById(R.id.test_arrow);
 
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnBegin.setVisibility(View.VISIBLE);
+                arrow.setVisibility(View.INVISIBLE);
+                textView.setVisibility(View.VISIBLE);
+                sendCommandToService("ACTION_STOP_SERVICE");
+            }
+        });
+
         btnBegin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
