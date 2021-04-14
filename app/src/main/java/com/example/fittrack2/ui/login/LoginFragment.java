@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
 import com.amplifyframework.core.Amplify;
 import com.example.fittrack2.R;
 import com.example.fittrack2.ui.homepage.HomeFragment;
@@ -46,10 +47,20 @@ public class LoginFragment extends Fragment {
                 Amplify.Auth.signIn(
                         email.getText().toString(),
                         pass.getText().toString(),
-                        result -> Log.i("AuthQuickstart", result.isSignInComplete() ? "Sign in succeeded" : "Sign in not complete"),
+                        result -> {
+                            System.out.println(result);
+                            if(result.isSignInComplete()){
+                                Amplify.Auth.fetchAuthSession(
+                                        res -> Log.i("AmplifyQuickstart", res.toString()),
+                                        error -> Log.e("AmplifyQuickstart", error.toString())
+                                );
+                            }
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contentFragmentArea, new HomeFragment()).commit();
+                        },
                         error -> Log.e("AuthQuickstart", error.toString())
                 );
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contentFragmentArea, new HomeFragment()).commit();
+
+                //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contentFragmentArea, new HomeFragment()).commit();
             }
         });
 

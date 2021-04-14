@@ -88,10 +88,19 @@ Parameters:
                       
   usernameAttributes:
     Type: CommaDelimitedList
-              
+      
+  triggers:
+    Type: String
+                      
   userPoolGroupList:
     Type: CommaDelimitedList
-                          
+                        
+  parentStack:
+    Type: String
+                
+  permissions:
+    Type: CommaDelimitedList
+              
   dependsOn:
     Type: CommaDelimitedList
     
@@ -106,7 +115,7 @@ Resources:
   # Created to allow the UserPool SMS Config to publish via the Simple Notification Service during MFA Process
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, 'fittraf3659b77_sns-role', !Join ['',[ 'sns', 'f3659b77', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, 'fittrafc76cb0c_sns-role', !Join ['',[ 'sns', 'fc76cb0c', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument: 
         Version: "2012-10-17"
         Statement: 
@@ -118,10 +127,10 @@ Resources:
               - "sts:AssumeRole"
             Condition: 
               StringEquals:
-                sts:ExternalId: fittraf3659b77_role_external_id
+                sts:ExternalId: fittrafc76cb0c_role_external_id
       Policies: 
         - 
-          PolicyName: fittraf3659b77-sns-policy
+          PolicyName: fittrafc76cb0c-sns-policy
           PolicyDocument: 
             Version: "2012-10-17"
             Statement: 
@@ -169,15 +178,27 @@ Resources:
       SmsVerificationMessage: !Ref smsVerificationMessage
       SmsConfiguration: 
         SnsCallerArn: !GetAtt SNSRole.Arn
-        ExternalId: fittraf3659b77_role_external_id
+        ExternalId: fittrafc76cb0c_role_external_id
     
+  
+    
+    
+  
+    
+    
+  
+  
+   
+    
+  # Updating lambda role with permissions to Cognito
+  
   
   UserPoolClientWeb:
   # Created provide application access to user pool
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: fittraf3659b77_app_clientWeb
+      ClientName: fittrafc76cb0c_app_clientWeb
       
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
       UserPoolId: !Ref UserPool
@@ -187,7 +208,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: fittraf3659b77_app_client
+      ClientName: fittrafc76cb0c_app_client
       
       GenerateSecret: !Ref userpoolClientGenerateSecret
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
@@ -198,7 +219,7 @@ Resources:
   # Created to execute Lambda which gets userpool app client config values
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', 'f3659b77', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', 'fc76cb0c', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -252,7 +273,7 @@ Resources:
   # Marked as depending on UserPoolClientRole for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: fittraf3659b77_userpoolclient_lambda_iam_policy
+      PolicyName: fittrafc76cb0c_userpoolclient_lambda_iam_policy
       Roles: 
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -269,7 +290,7 @@ Resources:
   # Marked as depending on UserPoolClientLambdaPolicy for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: fittraf3659b77_userpoolclient_lambda_log_policy
+      PolicyName: fittrafc76cb0c_userpoolclient_lambda_log_policy
       Roles: 
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -309,7 +330,7 @@ Resources:
   # Always created
     Type: AWS::Cognito::IdentityPool
     Properties: 
-      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'fittrack2f3659b77_identitypool_f3659b77', !Join ['',['fittrack2f3659b77_identitypool_f3659b77', '__', !Ref env]]]
+      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'fittrack2fc76cb0c_identitypool_fc76cb0c', !Join ['',['fittrack2fc76cb0c_identitypool_fc76cb0c', '__', !Ref env]]]
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient
